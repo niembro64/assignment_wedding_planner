@@ -1,8 +1,35 @@
 @{
     ViewData["Title"] = "New Wedding";
 }
+@model Wedding
 
-<div class="text-center">
-    <h1>Create Wedding</h1>
-  
+<div class="d-flex justify-content-center align-items-start flex-row flex-wrap">
+
+  <form class="d-flex flex-column align-items-start m-3" action="/weddings/add" method="post">
+    <h3>New Wedding</h3>
+
+    <label for="WedderOne">WedderOne</label>
+    <input asp-for="WedderOne">
+    <span asp-validation-for="WedderOne" class="text-danger"></span>
+
+    <label for="WedderTwo">WedderTwo</label>
+    <input asp-for="WedderTwo">
+    <span asp-validation-for="WedderTwo" class="text-danger"></span>
+
+    <label for="Date">Date</label>
+    <input asp-for="Date">
+    <span asp-validation-for="Date" class="text-danger"></span>
+
+    <label for="Address">Address</label>
+    <input asp-for="Address">
+    <span asp-validation-for="Address" class="text-danger"></span>
+
+    @* <label for="CreatedById">CreatedById</label>
+    <input asp-for="CreatedById" value=@ViewBag.Session_UserId>
+    <span asp-validation-for="CreatedById" class="text-danger"></span> *@
+
+    <input type="hidden" name="CreatedById" value=@ViewBag.Session_UserId>
+
+    <input type="submit" value="Create" class="btn btn-primary my-3">
+  </form>
 </div>

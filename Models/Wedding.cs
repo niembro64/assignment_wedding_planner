@@ -19,6 +19,8 @@ namespace assignment_wedding_planner.Models
     public DateTime Date { get; set; }
     [Required]
     public string Address { get; set; }
+    [Required]
+    public int CreatedById {get;set;}
     // navigation property
     public List<Reservation> UserList { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.Now;
@@ -29,7 +31,7 @@ namespace assignment_wedding_planner.Models
   {
     public static ValidationResult FutureDate(DateTime date)
     {
-      return DateTime.Compare(date, DateTime.Today) < 0 ? new ValidationResult("Date cannot be in the future") : ValidationResult.Success;
+      return DateTime.Compare(date, DateTime.Today) < 0 ? new ValidationResult("Date cannot be in the past") : ValidationResult.Success;
     }
     public static ValidationResult PastDate(DateTime date)
     {

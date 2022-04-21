@@ -27,6 +27,11 @@ namespace assignment_wedding_planner.Controllers
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public IActionResult Index()
     {
+      ViewBag.AllUsers = _context.Users.OrderBy(a => a.FirstName).ToList();
+      ViewBag.AllWeddings = _context.Weddings.OrderBy(a => a.WedderOne).ToList();
+      ViewBag.Session_UserId = HttpContext.Session.GetInt32("Session_UserId");
+      ViewBag.Session_FirstName = HttpContext.Session.GetString("Session_FirstName");
+      ViewBag.Session_LastName = HttpContext.Session.GetString("Session_LastName");
 
       return Redirect("/login");
     }
@@ -57,15 +62,15 @@ namespace assignment_wedding_planner.Controllers
     [HttpGet("/dashboard")]
     public IActionResult Dashboard()
     {
-            Console.WriteLine("--------------------------IN Dashboard");
+      Console.WriteLine("--------------------------IN Dashboard");
 
       if (HttpContext.Session.GetInt32("Session_UserId") == null)
       {
-            Console.WriteLine("--------------------------Null UseId");
+        Console.WriteLine("--------------------------Null UseId");
 
         return RedirectToAction("Logout");
       }
-            Console.WriteLine("--------------------------Rendering Dashboard");
+      Console.WriteLine("--------------------------Rendering Dashboard");
 
       ViewBag.AllUsers = _context.Users.OrderBy(a => a.FirstName).ToList();
       ViewBag.AllWeddings = _context.Weddings.OrderBy(a => a.WedderOne).ToList();
@@ -90,6 +95,35 @@ namespace assignment_wedding_planner.Controllers
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    [HttpPost("weddings/add")]
+    public IActionResult AddWedding(Wedding newWedding)
+    {
+      if (ModelState.IsValid)
+      {
+
+
+        _context.Weddings.Add(newWedding);
+        _context.SaveChanges();
+
+        ViewBag.AllUsers = _context.Users.OrderBy(a => a.FirstName).ToList();
+        ViewBag.AllWeddings = _context.Weddings.OrderBy(a => a.WedderOne).ToList();
+        ViewBag.Session_UserId = HttpContext.Session.GetInt32("Session_UserId");
+        ViewBag.Session_FirstName = HttpContext.Session.GetString("Session_FirstName");
+        ViewBag.Session_LastName = HttpContext.Session.GetString("Session_LastName");
+
+        return RedirectToAction("Dashboard");
+      }
+      else
+      {
+        ViewBag.AllUsers = _context.Users.OrderBy(a => a.FirstName).ToList();
+        ViewBag.AllWeddings = _context.Weddings.OrderBy(a => a.WedderOne).ToList();
+        ViewBag.Session_UserId = HttpContext.Session.GetInt32("Session_UserId");
+        ViewBag.Session_FirstName = HttpContext.Session.GetString("Session_FirstName");
+        ViewBag.Session_LastName = HttpContext.Session.GetString("Session_LastName");
+        return View("NewWedding");
+      }
+    }
 
     [HttpPost("users/add")]
     public IActionResult AddUser(User newUser)
