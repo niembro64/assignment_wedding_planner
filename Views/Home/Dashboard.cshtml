@@ -1,8 +1,49 @@
 @{
-    ViewData["Title"] = "Dashboard";
+  ViewData["Title"] = "Dashboard";
 }
 
 <div class="text-center">
-    <h1>Dashboard</h1>
-  <p>@ViewBag.UserId</p>
+  <h1>Dashboard</h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Wedders</th>
+        <th scope="col">Date</th>
+        <th scope="col">Address</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Functions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (Wedding x in @ViewBag.AllWeddings)
+      {
+        <tr>
+          <td>
+            <p>@x.WedderOne & @x.WedderTwo</p>
+          </td>
+          <td>
+            <p>@x.Date</p>
+          </td>
+          <td>
+            <p>@x.Address</p>
+          </td>
+          <td>
+            <p>@x.CreatedById</p>
+          </td>
+
+          @if (@x.CreatedById == @ViewBag.Session_UserId)
+          {
+            <td><a class="btn btn-danger" href="/weddings/delete/@x.WeddingId">Delete</a></td>
+          }
+          else
+          {
+            <td> <a class="btn btn-info" href="/weddings/reserve/@x.WeddingId">RSVP</a> </td>
+          }
+
+        </tr>
+
+      }
 </div>
+
+</tbody>
+</table>

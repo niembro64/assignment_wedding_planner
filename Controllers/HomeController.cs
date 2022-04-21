@@ -70,13 +70,14 @@ namespace assignment_wedding_planner.Controllers
 
         return RedirectToAction("Logout");
       }
-      Console.WriteLine("--------------------------Rendering Dashboard");
+
 
       ViewBag.AllUsers = _context.Users.OrderBy(a => a.FirstName).ToList();
       ViewBag.AllWeddings = _context.Weddings.OrderBy(a => a.WedderOne).ToList();
       ViewBag.Session_UserId = HttpContext.Session.GetInt32("Session_UserId");
       ViewBag.Session_FirstName = HttpContext.Session.GetString("Session_FirstName");
       ViewBag.Session_LastName = HttpContext.Session.GetString("Session_LastName");
+      Console.WriteLine("--------------------------Rendering Dashboard");
       return View();
     }
 
@@ -123,6 +124,15 @@ namespace assignment_wedding_planner.Controllers
         ViewBag.Session_LastName = HttpContext.Session.GetString("Session_LastName");
         return View("NewWedding");
       }
+    }
+    [HttpGet("weddings/delete/{wedId}")]
+    public IActionResult DeleteWedding(int wedId)
+    {
+      Console.WriteLine($"DELETING : {wedId}");
+      Wedding WeddingToRemove = _context.Weddings.SingleOrDefault(s => s.WeddingId == wedId);
+      _context.Weddings.Remove(WeddingToRemove);
+      _context.SaveChanges();
+      return RedirectToAction("Dashboard");
     }
 
     [HttpPost("users/add")]
