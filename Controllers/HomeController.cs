@@ -22,13 +22,57 @@ namespace assignment_wedding_planner.Controllers
 
     public IActionResult Index()
     {
-      return View();
+      return Redirect("/login");
     }
 
-    public IActionResult Privacy()
+    [HttpGet("/login")]
+    public IActionResult Login()
     {
       return View();
     }
+    [HttpGet("/logout")]
+    public IActionResult LogOut()
+    {
+      // need to clear session
+
+      return Redirect("/login");
+    }
+    [HttpGet("/dashboard")]
+    public IActionResult Dashboard()
+    {
+      return View();
+    }
+    [HttpGet("/new")]
+    public IActionResult NewWedding()
+    {
+      return View();
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    [HttpPost("users/add")]
+    public IActionResult AddUser(User newUser)
+    {
+      if (ModelState.IsValid)
+      {
+        _context.Users.Add(newUser);
+        _context.SaveChanges();
+
+        ViewBag.AllUsers = _context.Users.OrderBy(a => a.FirstName).ToList();
+        ViewBag.AllWeddings = _context.Weddings.OrderBy(a => a.WedderOne).ToList();
+
+        return RedirectToAction("Dashboard");
+      }
+      else
+      {
+        ViewBag.AllUsers = _context.Users.OrderBy(a => a.FirstName).ToList();
+        ViewBag.AllWeddings = _context.Weddings.OrderBy(a => a.WedderOne).ToList();
+
+        return View("Login");
+      }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

@@ -14402,6 +14402,11 @@
   "RootNamespace": "assignment_wedding_planner",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\nieme\\Documents\\CodingDojo\\CSharpStack2022\\3.3\\assignment_wedding_planner\\Views\\Home\\Login.cshtml",
+      "TargetPath": "Views\\Home\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\nieme\\Documents\\CodingDojo\\CSharpStack2022\\3.3\\assignment_wedding_planner\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -14419,6 +14424,16 @@
     {
       "FilePath": "c:\\Users\\nieme\\Documents\\CodingDojo\\CSharpStack2022\\3.3\\assignment_wedding_planner\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nieme\\Documents\\CodingDojo\\CSharpStack2022\\3.3\\assignment_wedding_planner\\Views\\Home\\NewWedding.cshtml",
+      "TargetPath": "Views\\Home\\NewWedding.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nieme\\Documents\\CodingDojo\\CSharpStack2022\\3.3\\assignment_wedding_planner\\Views\\Home\\Dashboard.cshtml",
+      "TargetPath": "Views\\Home\\Dashboard.cshtml",
       "FileKind": "mvc"
     },
     {

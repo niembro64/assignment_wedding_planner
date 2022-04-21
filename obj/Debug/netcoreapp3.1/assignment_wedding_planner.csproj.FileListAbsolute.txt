@@ -58,3 +58,6 @@ C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.3\assignment_wedding_plann
 C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.3\assignment_wedding_planner\obj\Debug\netcoreapp3.1\assignment_wedding_planner.dll
 C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.3\assignment_wedding_planner\obj\Debug\netcoreapp3.1\assignment_wedding_planner.pdb
 C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.3\assignment_wedding_planner\obj\Debug\netcoreapp3.1\assignment_wedding_planner.genruntimeconfig.cache
+C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.3\assignment_wedding_planner\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs
+C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.3\assignment_wedding_planner\obj\Debug\netcoreapp3.1\Razor\Views\Home\Dashboard.cshtml.g.cs
+C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.3\assignment_wedding_planner\obj\Debug\netcoreapp3.1\Razor\Views\Home\NewWedding.cshtml.g.cs
