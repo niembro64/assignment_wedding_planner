@@ -14402,6 +14402,11 @@
   "RootNamespace": "assignment_wedding_planner",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\nieme\\Documents\\CodingDojo\\CSharpStack2022\\3.3\\assignment_wedding_planner\\Views\\Home\\_LoginPartial.cshtml",
+      "TargetPath": "Views\\Home\\_LoginPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\nieme\\Documents\\CodingDojo\\CSharpStack2022\\3.3\\assignment_wedding_planner\\Views\\Home\\Login.cshtml",
       "TargetPath": "Views\\Home\\Login.cshtml",
       "FileKind": "mvc"

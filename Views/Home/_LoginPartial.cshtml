@@ -1,0 +1,15 @@
+@model LoginUser
+
+<form class="d-flex flex-column align-items-start m-3"action="/users/login" method="post">
+    <h3>Login</h3>
+
+    <label for="LoginEmail">Email</label>
+    <input asp-for="LoginEmail" value="niemo@gmail.com">
+    <span asp-validation-for="LoginEmail" class="text-danger"></span>
+
+    <label for="LoginPassword">Password</label>
+    <input asp-for="LoginPassword" value="Iam!Poppy99$">
+    <span asp-validation-for="LoginPassword" class="text-danger"></span>
+
+    <input type="submit" value="Enter" class="btn btn-success my-3">
+</form>

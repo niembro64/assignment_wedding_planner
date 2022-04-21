@@ -3,11 +3,11 @@
 }
 @model User
 
+<h1>Wedding Planner</h1>
+<div class="d-flex justify-content-center align-items-start flex-row flex-wrap">
 
-<div class="d-flex justify-content-center align-items-center flex-column">
-  <a class="btn btn-secondary my-3" href="/userlogin">User Login</a>
-  <form class="d-flex flex-column align-items-start" action="/users/add" method="post">
-    <h1>New User</h1>
+  <form class="d-flex flex-column align-items-start m-3" action="/users/add" method="post">
+    <h3>Register</h3>
 
     <label for="FirstName">FirstName</label>
     <input asp-for="FirstName">
@@ -29,8 +29,9 @@
     <input asp-for="Confirm">
     <span asp-validation-for="Confirm" class="text-danger"></span>
 
-    <input type="submit" value="Register" class="btn btn-primary my-3">
+    <input type="submit" value="Create" class="btn btn-primary my-3">
   </form>
+  <partial name="_LoginPartial" />
 </div>
 
 
