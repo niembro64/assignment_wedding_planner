@@ -1,6 +1,7 @@
 @{
   ViewData["Title"] = "Dashboard";
 }
+@model Reservation
 
 <div class="text-center">
   <h1>Dashboard</h1>
@@ -30,20 +31,30 @@
           <td>
             <p>@x.CreatedById</p>
           </td>
-
           @if (@x.CreatedById == @ViewBag.Session_UserId)
           {
             <td><a class="btn btn-danger" href="/weddings/delete/@x.WeddingId">Delete</a></td>
           }
           else
           {
-            <td> <a class="btn btn-info" href="/weddings/reserve/@x.WeddingId">RSVP</a> </td>
+            <td>
+              <form action="/reservations/reserve" method="post">
+                @* <label for="UserId">UserId</label>
+                  <input asp-for="UserId">
+                  <span asp-validation-for="UserId" class="text-danger"></span>
+                  <label for="WeddingId">WeddingId</label>
+                  <input asp-for="WeddingId">
+                  <span asp-validation-for="WeddingId" class="text-danger"></span> *@
+
+                <input type="hidden" asp-for="UserId" value="@ViewBag.Session_UserId">
+                <input type="hidden" asp-for="WeddingId" value="@x.WeddingId">
+                <input class="btn btn-info" type="button" value="RSVP">
+              </form>
+            </td>
           }
-
         </tr>
-
       }
-</div>
 
-</tbody>
-</table>
+    </tbody>
+  </table>
+</div>

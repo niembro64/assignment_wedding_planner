@@ -6,6 +6,6 @@ namespace assignment_wedding_planner.Models
     public MyContext(DbContextOptions options) : base(options) { }
     public DbSet<User> Users { get; set; }
     public DbSet<Wedding> Weddings { get; set; }
-    public DbSet<Reservation> Reservation { get; set; }
+    public DbSet<Reservation> Reservations { get; set; }
   }
 }

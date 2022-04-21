@@ -102,8 +102,6 @@ namespace assignment_wedding_planner.Controllers
     {
       if (ModelState.IsValid)
       {
-
-
         _context.Weddings.Add(newWedding);
         _context.SaveChanges();
 
@@ -133,6 +131,20 @@ namespace assignment_wedding_planner.Controllers
       _context.Weddings.Remove(WeddingToRemove);
       _context.SaveChanges();
       return RedirectToAction("Dashboard");
+    }
+    [HttpPost("reservations/reserve")]
+    public IActionResult AddReservation(Reservation newReservation)
+    {
+        Console.WriteLine("--------------------------RESERVING");
+      if (ModelState.IsValid)
+      {
+        _context.Reservations.Add(newReservation);
+        _context.SaveChanges();
+
+
+        return RedirectToAction("Dashboard");
+      }
+      return View("Dashboard");
     }
 
     [HttpPost("users/add")]
