@@ -42,18 +42,10 @@
           else
           {
             <td>
-              <form class="d-flex flex-column align-items-start m-3" action="/reservations/reserve" method="post">
-                <h3>New Reservation</h3>
-
-                <label for="UserId">UserId</label>
-                <input asp-for="UserId" value=@ViewBag.Session_UserId>
-                <span asp-validation-for="UserId" class="text-danger"></span>
-
-                <label for="WeddingId">WeddingId</label>
-                <input asp-for="WeddingId" value=@x.WeddingId>
-                <span asp-validation-for="WeddingId" class="text-danger"></span>
-
-                <input type="submit" value="Create" class="btn btn-primary my-3">
+              <form action="/reservations/reserve" method="post">
+                <input type="hidden" asp-for="UserId" value=@ViewBag.Session_UserId>
+                <input type="hidden" asp-for="WeddingId" value=@x.WeddingId>
+                <input type="submit" value="RSVP" class="btn btn-primary my-3">
               </form>
             </td>
 

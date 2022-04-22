@@ -73,7 +73,7 @@ namespace assignment_wedding_planner.Controllers
 
 
       ViewBag.AllUsers = _context.Users.OrderBy(a => a.FirstName).ToList();
-      ViewBag.AllWeddings = _context.Weddings.OrderBy(a => a.WedderOne).ToList();
+      ViewBag.AllWeddings = _context.Weddings.OrderBy(a => a.WeddingId).ToList();
       ViewBag.Session_UserId = HttpContext.Session.GetInt32("Session_UserId");
       ViewBag.Session_FirstName = HttpContext.Session.GetString("Session_FirstName");
       ViewBag.Session_LastName = HttpContext.Session.GetString("Session_LastName");
