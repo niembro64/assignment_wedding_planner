@@ -5,14 +5,14 @@
 <h1>@ViewBag.OneWedding.WedderOne & @ViewBag.OneWedding.WedderTwo</h1>
 
 
-@foreach (Reservation a in @ViewBag.OneWeddingReservations.UserList)
+@* @foreach (Reservation a in @ViewBag.OneWeddingReservations.UserList)
 {
   <p>@a.UserId</p>
-}
+} *@
 @foreach (Reservation a in @ViewBag.OneWeddingFull.UserList)
 {
-  <p>@a.User.FirstName @a.User.LastName</p>  
-  <p>@a.User.UserId</p>
+  <p>@a.User.UserId @a.User.FirstName @a.User.LastName</p>  
+ 
 }
 
 
