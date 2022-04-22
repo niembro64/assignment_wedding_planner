@@ -62,3 +62,4 @@ C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.3\assignment_wedding_plann
 C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.3\assignment_wedding_planner\obj\Debug\netcoreapp3.1\Razor\Views\Home\Dashboard.cshtml.g.cs
 C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.3\assignment_wedding_planner\obj\Debug\netcoreapp3.1\Razor\Views\Home\NewWedding.cshtml.g.cs
 C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.3\assignment_wedding_planner\obj\Debug\netcoreapp3.1\Razor\Views\Home\_LoginPartial.cshtml.g.cs
+C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.3\assignment_wedding_planner\obj\Debug\netcoreapp3.1\Razor\Views\Home\OneWedding.cshtml.g.cs

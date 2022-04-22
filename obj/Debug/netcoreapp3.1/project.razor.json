@@ -14452,6 +14452,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\nieme\\Documents\\CodingDojo\\CSharpStack2022\\3.3\\assignment_wedding_planner\\Views\\Home\\OneWedding.cshtml",
+      "TargetPath": "Views\\Home\\OneWedding.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\nieme\\Documents\\CodingDojo\\CSharpStack2022\\3.3\\assignment_wedding_planner\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"

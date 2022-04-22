@@ -59,6 +59,30 @@ namespace assignment_wedding_planner.Controllers
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    [HttpGet("/weddings/{wId}")]
+    public IActionResult OneWedding(int wId)
+    {
+      ViewBag.OneWedding = _context.Weddings.FirstOrDefault(w => w.WeddingId == wId);
+
+      ViewBag.OneWeddingPlus = _context.Weddings.Include(s => s.UserList).FirstOrDefault(w => w.WeddingId == wId);
+
+      ViewBag.OneWeddingPlusPlus = _context.Weddings.Include(s => s.UserList).ThenInclude(k => k.User).FirstOrDefault(w => w.WeddingId == wId);
+
+
+
+
+      ViewBag.AllUsers = _context.Users.OrderBy(a => a.FirstName).ToList();
+      ViewBag.AllWeddings = _context.Weddings.OrderBy(a => a.WedderOne).ToList();
+
+
+
+      ViewBag.Session_UserId = HttpContext.Session.GetInt32("Session_UserId");
+      ViewBag.Session_FirstName = HttpContext.Session.GetString("Session_FirstName");
+      ViewBag.Session_LastName = HttpContext.Session.GetString("Session_LastName");
+      return View();
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     [HttpGet("/dashboard")]
     public IActionResult Dashboard()
     {
