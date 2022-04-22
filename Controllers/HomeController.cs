@@ -64,9 +64,11 @@ namespace assignment_wedding_planner.Controllers
     {
       ViewBag.OneWedding = _context.Weddings.FirstOrDefault(w => w.WeddingId == wId);
 
-      ViewBag.OneWeddingPlus = _context.Weddings.Include(s => s.UserList).FirstOrDefault(w => w.WeddingId == wId);
+      ViewBag.OneWeddingReservations = _context.Weddings.Include(s => s.UserList).FirstOrDefault(w => w.WeddingId == wId);
 
-      ViewBag.OneWeddingPlusPlus = _context.Weddings.Include(s => s.UserList).ThenInclude(k => k.User).FirstOrDefault(w => w.WeddingId == wId);
+
+      // omg it works
+      ViewBag.OneWeddingFull = _context.Weddings.Include(s => s.UserList).ThenInclude(d => d.User).FirstOrDefault(a => a.WeddingId == wId);
 
 
 
