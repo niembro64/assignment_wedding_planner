@@ -39,20 +39,39 @@
           {
             <td><a class="btn btn-danger" href="/weddings/delete/@x.WeddingId">Delete</a></td>
           }
-          else
+          @if (@x.CreatedById != @ViewBag.Session_UserId)
           {
-            <td>
-              <form action="/reservations/reserve" method="post">
-                <input type="hidden" asp-for="UserId" value=@ViewBag.Session_UserId>
-                <input type="hidden" asp-for="WeddingId" value=@x.WeddingId>
-                <input type="submit" value="RSVP" class="btn btn-primary my-3">
-              </form>
-            </td>
-
+            bool found = false;
+            @foreach (Reservation a in @ViewBag.OneUserReservations)
+            {
+              @if (a.WeddingId == x.WeddingId)
+              {
+                found = true;
+              }
+            }
+            if (found)
+            {
+              <td>
+                <form action="/reservations/unreserve" method="post">
+                  <input type="hidden" asp-for="UserId" value=@ViewBag.Session_UserId>
+                  <input type="hidden" asp-for="WeddingId" value=@x.WeddingId>
+                  <input type="submit" value="De-RSVP" class="btn btn-warning my-3">
+                </form>
+              </td>
+            }
+            else
+            {
+              <td>
+                <form action="/reservations/reserve" method="post">
+                  <input type="hidden" asp-for="UserId" value=@ViewBag.Session_UserId>
+                  <input type="hidden" asp-for="WeddingId" value=@x.WeddingId>
+                  <input type="submit" value="RSVP" class="btn btn-primary my-3">
+                </form>
+              </td>
+            }
           }
         </tr>
       }
-
     </tbody>
   </table>
 
@@ -75,4 +94,9 @@
 
     <input type="submit" value="Create" class="btn btn-primary my-3">
     </form> *@
+
+  @* @foreach (Reservation r in @ViewBag.OneUserReservations)
+    {
+    <p>@r.WeddingId @r.UserId</p>
+    } *@
 </div>

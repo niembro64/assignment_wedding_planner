@@ -71,12 +71,19 @@ namespace assignment_wedding_planner.Controllers
         return RedirectToAction("Logout");
       }
 
-
       ViewBag.AllUsers = _context.Users.OrderBy(a => a.FirstName).ToList();
       ViewBag.AllWeddings = _context.Weddings.OrderBy(a => a.WeddingId).ToList();
       ViewBag.Session_UserId = HttpContext.Session.GetInt32("Session_UserId");
       ViewBag.Session_FirstName = HttpContext.Session.GetString("Session_FirstName");
       ViewBag.Session_LastName = HttpContext.Session.GetString("Session_LastName");
+
+      // we know it won't be null above
+      int uId = (int)HttpContext.Session.GetInt32("Session_UserId");
+
+      ViewBag.OneUserReservations = _context.Reservations.Where(r => r.UserId == uId).ToList();
+
+      // ViewBag.OneUserReservations = _context.Reservations.OrderBy(a => a.UserId == uId).ToList();
+      // ViewBag.SomeReservations = _context.Reservations.Include(f => f.CategoryList).Where(s => s.CategoryList.All(d => d.CategoryId != catId));
       Console.WriteLine("--------------------------Rendering Dashboard");
       return View();
     }
