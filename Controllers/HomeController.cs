@@ -104,9 +104,20 @@ namespace assignment_wedding_planner.Controllers
     [HttpGet("weddings/delete/{wedId}")]
     public IActionResult DeleteWedding(int wedId)
     {
-      Console.WriteLine($"DELETING : {wedId}");
+      Console.WriteLine($"+++++++DELETING WEDDING : {wedId}");
       Wedding WeddingToRemove = _context.Weddings.SingleOrDefault(s => s.WeddingId == wedId);
       _context.Weddings.Remove(WeddingToRemove);
+      _context.SaveChanges();
+      return RedirectToAction("Dashboard");
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    [HttpGet("reservations/delete/{rId}")]
+    public IActionResult DeleteReservation(int rId)
+    {
+      Console.WriteLine($"+++++++DELETING RESERVATION : {rId}");
+      Reservation ReservationToDelete = _context.Reservations.SingleOrDefault(s => s.ReservationId == rId);
+      _context.Reservations.Remove(ReservationToDelete);
       _context.SaveChanges();
       return RedirectToAction("Dashboard");
     }

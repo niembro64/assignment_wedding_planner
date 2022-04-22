@@ -1,5 +1,6 @@
 @{
   ViewData["Title"] = "Dashboard";
+  int rId = 0; 
 }
 @model Reservation
 
@@ -42,21 +43,19 @@
           @if (@x.CreatedById != @ViewBag.Session_UserId)
           {
             bool found = false;
+            @* int rId = 0; *@
             @foreach (Reservation a in @ViewBag.OneUserReservations)
             {
               @if (a.WeddingId == x.WeddingId)
               {
                 found = true;
+                rId = a.ReservationId;
               }
             }
-            if (found)
+            if (found && rId != 0)
             {
               <td>
-                <form action="/reservations/unreserve" method="post">
-                  <input type="hidden" asp-for="UserId" value=@ViewBag.Session_UserId>
-                  <input type="hidden" asp-for="WeddingId" value=@x.WeddingId>
-                  <input type="submit" value="De-RSVP" class="btn btn-warning my-3">
-                </form>
+                <a class="btn btn-warning" href="/reservations/delete/@rId">De-RSVP</a>
               </td>
             }
             else
