@@ -8,6 +8,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
+        <th scope="col">WeddingId</th>
         <th scope="col">Wedders</th>
         <th scope="col">Date</th>
         <th scope="col">Address</th>
@@ -19,6 +20,9 @@
       @foreach (Wedding x in @ViewBag.AllWeddings)
       {
         <tr>
+          <td>
+            <p>@x.WeddingId</p>
+          </td>
           <td>
             <p>@x.WedderOne & @x.WedderTwo</p>
           </td>
@@ -38,23 +42,45 @@
           else
           {
             <td>
-              <form action="/reservations/reserve" method="post">
-                @* <label for="UserId">UserId</label>
-                  <input asp-for="UserId">
-                  <span asp-validation-for="UserId" class="text-danger"></span>
-                  <label for="WeddingId">WeddingId</label>
-                  <input asp-for="WeddingId">
-                  <span asp-validation-for="WeddingId" class="text-danger"></span> *@
+              <form class="d-flex flex-column align-items-start m-3" action="/reservations/reserve" method="post">
+                <h3>New Reservation</h3>
 
-                <input type="hidden" asp-for="UserId" value="@ViewBag.Session_UserId">
-                <input type="hidden" asp-for="WeddingId" value="@x.WeddingId">
-                <input class="btn btn-info" type="button" value="RSVP">
+                <label for="UserId">UserId</label>
+                <input asp-for="UserId" value=@ViewBag.Session_UserId>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+
+                <label for="WeddingId">WeddingId</label>
+                <input asp-for="WeddingId" value=@x.WeddingId>
+                <span asp-validation-for="WeddingId" class="text-danger"></span>
+
+                <input type="submit" value="Create" class="btn btn-primary my-3">
               </form>
             </td>
+
           }
         </tr>
       }
 
     </tbody>
   </table>
+
+  @* <form action="/reservations/reserve" method="post">
+    <input type="hidden" asp-for="UserId" value=@ViewBag.Session_UserId>
+    <input type="hidden" asp-for="WeddingId" value="2">
+    <input class="btn btn-info" type="button" value="RSVP">
+    </form> *@
+
+  @* <form class="d-flex flex-column align-items-start m-3" action="/reservations/reserve" method="post">
+    <h3>New Reservation</h3>
+
+    <label for="UserId">UserId</label>
+    <input asp-for="UserId" value=@ViewBag.Session_UserId>
+    <span asp-validation-for="UserId" class="text-danger"></span>
+
+    <label for="WeddingId">WeddingId</label>
+    <input asp-for="WeddingId">
+    <span asp-validation-for="WeddingId" class="text-danger"></span>
+
+    <input type="submit" value="Create" class="btn btn-primary my-3">
+    </form> *@
 </div>

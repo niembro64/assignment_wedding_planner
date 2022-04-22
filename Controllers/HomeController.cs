@@ -94,6 +94,33 @@ namespace assignment_wedding_planner.Controllers
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    [HttpGet("weddings/delete/{wedId}")]
+    public IActionResult DeleteWedding(int wedId)
+    {
+      Console.WriteLine($"DELETING : {wedId}");
+      Wedding WeddingToRemove = _context.Weddings.SingleOrDefault(s => s.WeddingId == wedId);
+      _context.Weddings.Remove(WeddingToRemove);
+      _context.SaveChanges();
+      return RedirectToAction("Dashboard");
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // [HttpGet("/reservations/{wId}/{uId}")]
+    // public IActionResult AddReservation(int wId, int uId)
+    // {
+    //   Console.WriteLine($"--------------------------GET RESERVING {wId} {uId}");
+
+
+    //     // Reservation tempReservation = new Reservation(wId, uId);
+    //     // _context.Reservations.Add(newReservation);
+    //     _context.SaveChanges();
+
+
+    //     return RedirectToAction("Dashboard");
+    // }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -123,24 +150,15 @@ namespace assignment_wedding_planner.Controllers
         return View("NewWedding");
       }
     }
-    [HttpGet("weddings/delete/{wedId}")]
-    public IActionResult DeleteWedding(int wedId)
-    {
-      Console.WriteLine($"DELETING : {wedId}");
-      Wedding WeddingToRemove = _context.Weddings.SingleOrDefault(s => s.WeddingId == wedId);
-      _context.Weddings.Remove(WeddingToRemove);
-      _context.SaveChanges();
-      return RedirectToAction("Dashboard");
-    }
+
     [HttpPost("reservations/reserve")]
     public IActionResult AddReservation(Reservation newReservation)
     {
-        Console.WriteLine("--------------------------RESERVING");
+      Console.WriteLine("--------------------------RESERVING");
       if (ModelState.IsValid)
       {
         _context.Reservations.Add(newReservation);
         _context.SaveChanges();
-
 
         return RedirectToAction("Dashboard");
       }
